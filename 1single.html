@@ -13,7 +13,7 @@ layout: page
     });
     const json = await response.json();
     const label = json['data'][0]['confidences'][0]['label'];
-    console.log(results)
+    console.log(results);
     results.innerHTML = `<br/><img src="${reader.result}" width="300"> <p>${label}</p> <p>${confidence}<p>`
   }
   function read() {
