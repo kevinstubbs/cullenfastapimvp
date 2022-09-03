@@ -19,7 +19,8 @@ layout: page
                 const json = await response.json();
                 const prediction = json['data'][0]['confidences'][0];
                 const div = document.createElement('div');
-                div.innerHTML = `<img class="prediction" src="${reader.result}" width="300"> <p>${prediction['label']}</p> <p>${confidences}<p> <p>${prediction['confidences']}<p>`
+                div.innerHTML = `<img class="prediction" src="${reader.result}" width="300"> <p>${prediction['label']}</p> <p>${prediction['confidences']}<p>`
+                    // <p>${confidences}<p>
                 results.append(div);
                 return resolve(prediction)
             }
