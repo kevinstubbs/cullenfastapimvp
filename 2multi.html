@@ -12,7 +12,7 @@ layout: page
     });
     const json = await response.json();
     const label = json['data'][0]['confidences'][0]['label'];
-    const conf = json['data'][0]['confidences'][0]['confidence'];
+    const conf = 100*(json['data'][0]['confidences'][0]['confidence']).toPrecision(4);
     const div = document.createElement('div');
     div.innerHTML = `<br/><img src="${reader.result}" width="300"> <p>${label}</p> <p>${conf}<p>`
     document.body.append(div);
