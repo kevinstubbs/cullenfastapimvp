@@ -11,12 +11,16 @@ layout: page
       method: "POST", body: JSON.stringify({ "data": [reader.result] }),
       headers: { "Content-Type": "application/json" }
     });
-    console.log(results);
-    console.log(reader.results);
-    const json = await response.json();
-    const label = json['data'][0]['confidences'][0]['label'];
+    // console.log(response);
+// how to get confidences to display??!!
     // console.log(results);
-    results.innerHTML = `<br/><img src="${reader.result}" width="300"> <p>${label}</p>`
+    // console.log(reader.results);
+    const json = await response.json();
+    console.log("json", json);
+    const label = json['data'][0]['confidences'][0]['label'];
+    const conf = json['data'][0]['confidences'][0]['confidence'];
+    // console.log("conf", conf);
+    results.innerHTML = `<br/><img src="${reader.result}" width="300"> <p>${label}</p> <p>${conf}<p>`
   }
   function read() {
     const reader = new FileReader();
