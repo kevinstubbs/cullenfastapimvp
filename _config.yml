@@ -1,3 +1,8 @@
+Header add Access-Control-Allow-Origin: "*"
+# Header add Access-Control-Allow-Methods: "GET,POST,OPTIONS,DELETE,PUT"
+
+Access-Control-Allow-Methods: POST
+Access-Control-Allow-Headers: Content-Type, Authorization
 remote_theme: daviddarnes/alembic@main
 plugins:
 - jekyll-remote-theme
@@ -7,3 +12,7 @@ description: Some basic examples of client interfaces to a computer vision API
 
 author:
   name: Jeremy Howard
+
+  
+
+  
