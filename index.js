@@ -39,3 +39,28 @@ async function loaded(reader) {
     // call python script integration attempts
   // const result = require('subprocess').result
   
+
+
+
+
+  /// test button javascript
+var testEl = document.querySelector('#testbtn');
+
+var testfunction = function(event) {
+  event.preventDefault();
+
+  console.log('test worked');
+  alert('test worked');
+
+};
+
+testEl.addEventListener('click', testfunction);
+
+
+//trying to bridge to python
+import {PythonShell} from 'python-shell';
+
+PythonShell.run('my_script.py', null, function (err) {
+  if (err) throw err;
+  console.log('finished');
+});
