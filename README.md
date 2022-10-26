@@ -21,7 +21,7 @@ The end goal is to get photos from the Egnyte API, seemlessly pass them to a cus
     - Passing the results of the huggingfaces AI API in index.html or index.js through the python script, index.js, to generate a word document. 
 
 ## Things I have tried
-1. Using require (preferred)
+1. Using require in JS (slightly preferred)
 2. Using flask
 
 
