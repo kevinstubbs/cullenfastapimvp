@@ -7,9 +7,9 @@ The purpose of this repo is to display two proof of concepts:
 
 # Usage 
 
-Use this repo by:
+To use this repo:
 
-1. Opening the index.html file in your browser. Select 'catTest.jpg', 'dogTest.jpg', 'dunnoTest.jpg' or any photos of cats or dogs on your computer to view the breed of the animal and the confidence of the answer.
-2. Run the python script that  to create a word document (in reports folder) that populated a template (photoExhibitionTemplate2.docx) with a table of photos and text. 
+1. Open the index.html file in your browser. Select 'catTest.jpg', 'dogTest.jpg', 'dunnoTest.jpg' or any photos of cats or dogs on your computer to view the breed of the animal and the confidence of the answer.
+2. Run the python script to create a word document and pdf (output in reports folder) that populated a template (photoExhibitionTemplate2.docx) with a table of photos (from ./images folder) and text. 
 
 
