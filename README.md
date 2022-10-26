@@ -13,3 +13,4 @@ To use this repo:
 2. Run the python script to create a word document and pdf (output in reports folder) that populated a template (photoExhibitionTemplate2.docx) with a table of photos (from ./images folder) and text. 
 
 
+
