@@ -1,0 +1,21 @@
+{
+  "name": "mvp",
+  "version": "1.0.0",
+  "description": "The purpose of this repo is to display two proof of concepts:",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CullerWhale/mvp.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CullerWhale/mvp/issues"
+  },
+  "homepage": "https://github.com/CullerWhale/mvp#readme"
+}
