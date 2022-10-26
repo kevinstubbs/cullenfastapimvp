@@ -1,19 +1,10 @@
-<input id="photos" type="file" multiple="">
+// this was once commented out and included in index.html script tag due to one image in a batch giving a CORS error
 
-<!-- one of the photos in the batch upload will not return, due to CORS -->
-<script src="./index.js"></script>
-
-<!-- Yesterday, including the javascript here led to no CORS problem and all of the images in a batch being processed successfully.  -->
-<!-- <script>
-
-  //handle read and process photos
-  async function loaded(reader) {
-    //tried to get photo path in order to display them in index.py word document which doesnt work since not relative path to script but really just need Egnyte API call later instead of file upload
+ //handle read and process photos
+async function loaded(reader) {
     // photos = document.getElementById('photos');
     // console.log(photos);
     // console.log(reader);
-    
-    // API call to a deployed AI algorithm that finds the breed of an animal photo that is uploaded 
     const response = await fetch('https://hf.space/embed/jph00/pets/+/api/predict/', {
       method: "POST", body: JSON.stringify({ "data": [reader.result] }),
       headers: { "Content-Type": "application/json" }
@@ -22,15 +13,16 @@
     // console.log(reader);
     console.log("json", json);
    
-    // storing data from API call
+   // storing data from API call
     const label = json['data'][0]['confidences'][0]['label'];
     const conf = 100*(json['data'][0]['confidences'][0]['confidence']).toPrecision(4);
     console.log(label);
     console.log(conf);
-     // displaying data from API call
+    // displaying data from API call
     const div = document.createElement('div');
     div.innerHTML = `<br/><img src="${reader.result}" width="300"> <p>${label}</p> <p>${conf}<p>`
     document.body.append(div);
+    
   }
 
   // read files uploaded
@@ -43,9 +35,7 @@
     // console.log(file);
   }
   photos.addEventListener('input', () => { [...photos.files].map(read) });
-  
-  // //VBA  or call python script
+
+    // call python script integration attempts
   // const result = require('subprocess').result
-
-  </script> -->
-
+  
