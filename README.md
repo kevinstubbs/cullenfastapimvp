@@ -14,13 +14,20 @@ To use this repo:
 
 
 ## End goal
-The end goal is to get photos from the Egnyte API, pass them to a custom (to be built) AI algorithm on a similar API as this application uses (hugging faces), use the results to populate a   
+The end goal is to get photos from the Egnyte API, seemlessly pass them to a custom (to be built) AI algorithm on a similar API as this application uses (hugging faces), and use the results to generate a downloadable word document. 
 
 ## Immediate struggles
-1. Passing the 
+1. Using javascript and python together
+    - Passing the results of the huggingfaces AI API in index.html or index.js through the python script, index.js, to generate a word document. 
+
+## Things I have tried
+1. Using require (preferred)
+2. Using flask
+
 
 ## Other Struggles
-1. Getting Egnyte API to work (need to learn more about call back url) 
+1. Getting Egnyte API to work (need to understand call back url more) 
+2. Encountering CORS errors. 
 
 
 
