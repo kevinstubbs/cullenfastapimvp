@@ -33,14 +33,15 @@ The end goal is to seemlessly pass photos (either uploaded or eventually with [E
 
 1. Using require python-shell in JS (preferred approach, open to other bridges)
 
-!(attempt1)[attempt1.jpg]
+![attempt1](./attempt1.jpg)
+
 
 However, 
 
 <!-- !(error1) -->
 
 
-
+![error1solution](./error1solution.jpg)
 
 
 
