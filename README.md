@@ -2,10 +2,10 @@
 
 - [Purpose](#purpose)
 - [Usage](#usage)
-- [End Goal](#end_goal)
+- [EndGoal](#endgoal)
 - [Struggles](#struggles)
 - [Attempts](#attempts)
-- [Other Struggles](#other_struggles)
+- [OtherStruggles](#otherstruggles)
 
 ## Purpose
 
@@ -22,7 +22,7 @@ To use this repo:
 2. Run the python script to create a word document and pdf (output in reports folder) that populated a template (photoExhibitionTemplate2.docx) with a table of photos (from ./images folder) and hard coded text. 
 
 
-## End goal
+## EndGoal
 The end goal is to seemlessly pass photos (either uploaded or eventually with [Egnyte API](https://developers.egnyte.com/docs) call) to a custom (to be built) AI algorithm on a similar API as this application uses (hugging faces), and use the results to generate a downloadable word document with the python script. 
 
 ## Struggles
@@ -63,7 +63,7 @@ I tried adding a relative path but zero progress.
     - Struggle with initiating a virtual machine or whatever and not breaking everything/cascading errors
 
 
-## Other Struggles
+## OtherStruggles
 1. Getting Egnyte API to work (need to understand and establish call back url) 
 2. Encountering CORS errors. 
 
