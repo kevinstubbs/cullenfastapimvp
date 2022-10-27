@@ -2,10 +2,10 @@
 
 - [Purpose](#purpose)
 - [Usage](#usage)
-- [End_Goal](#endgoal)
+- [End Goal](#end_goal)
 - [Struggles](#struggles)
 - [Attempts](#attempts)
-- [Other_Struggles](#otherstruggles)
+- [Other Struggles](#other_struggles)
 
 ## Purpose
 
@@ -35,14 +35,28 @@ The end goal is to seemlessly pass photos (either uploaded or eventually with [E
 
 ![attempt1](./attempt1.jpg)
 
+However, uncaught syntax error, cannot use import statement outside of a module. index.js:61
 
-However, 
+![error1](./error1.jpg)
 
-<!-- !(error1) -->
-
+Solution: fixed with type="module" in html script tag
 
 ![error1solution](./error1solution.jpg)
 
+However error 2 revealed itself: CORS origin policy
+
+![error2](./error2.jpg)
+
+Solution: create a server. Instead of creating an express server, I simply downloaded the Live Server extension, pressed f1 and selected run with live server. 
+
+![error2solution](./error2solution.jpg)
+ 
+
+However, an uncaught type error revealed itself. Failed to resolve module specifier "python-shell". Relative references must start with either '/' './' or '../'
+
+![error3](./error3.jpg)
+
+I tried adding a relative path but zero progress. 
 
 
 2. Using flask (unfamiliar with it and python)
