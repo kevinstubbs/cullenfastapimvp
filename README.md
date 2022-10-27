@@ -2,10 +2,10 @@
 
 - [Purpose](#purpose)
 - [Usage](#usage)
-- [EndGoal](#endgoal)
+- [End_Goal](#endgoal)
 - [Struggles](#struggles)
 - [Attempts](#attempts)
-- [OtherStruggles](#otherstruggles)
+- [Other_Struggles](#otherstruggles)
 
 ## Purpose
 
@@ -33,7 +33,7 @@ The end goal is to seemlessly pass photos (either uploaded or eventually with [E
 
 1. Using require python-shell in JS (preferred approach, open to other bridges)
 
-!(Attempt1)[attempt1.jpg]
+!(attempt1)[attempt1.jpg]
 
 However, 
 
