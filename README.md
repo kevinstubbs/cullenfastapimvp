@@ -26,8 +26,8 @@ To use this repo:
 The end goal is to seemlessly pass photos (either uploaded or eventually with [Egnyte API](https://developers.egnyte.com/docs) call) to a custom (to be built) AI algorithm on a similar API as this application uses (hugging faces), and use the results to generate a downloadable word document with the python script. 
 
 ## Struggles
-1. Using javascript and python together
-    - Passing the results of the huggingfaces AI API in index.html or index.js through the python script, index.js, to generate a word document. 
+1. Calling python script from javascript
+    - Passing the results of the huggingfaces AI API in index.html through the python script, index.py, to generate a word document. 
 
 ## Attempts
 
