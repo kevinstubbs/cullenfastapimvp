@@ -23,7 +23,7 @@ To use this repo:
 
 
 ## EndGoal
-The end goal is to seemlessly pass photos (either uploaded or eventually with [Egnyte API](https://developers.egnyte.com/docs) call) to a custom (to be built) AI algorithm on a similar API as this application uses (hugging faces), and use the results to generate a downloadable word document with the python script. 
+The end goal is to seemlessly pass photos (either uploaded or eventually with [Egnyte API](https://developers.egnyte.com/docs) call) to an AI algorithm on a similar API as this application uses (hugging faces), and use the results to generate a downloadable word document with the python script. 
 
 ## Struggles
 1. Calling python script from javascript
