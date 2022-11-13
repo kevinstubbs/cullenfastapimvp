@@ -1,3 +1,8 @@
+# To do
+hugging faces api
+fast api
+9pm monday
+
 # Table of Contents
 
 - [Purpose](#purpose)

@@ -58,10 +58,10 @@ testEl.addEventListener('click', testfunction);
 
 
 //trying to bridge to python
-import {PythonShell} from 'python-shell';
+// import {PythonShell} from 'python-shell';
 
-PythonShell.run('./index.py', null, function (err) {
-  if (err) throw err;
-  console.log('finished');
-});
+// PythonShell.run('./index.py', null, function (err) {
+//   if (err) throw err;
+//   console.log('finished');
+// });
 

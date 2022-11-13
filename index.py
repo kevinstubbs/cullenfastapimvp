@@ -3,13 +3,13 @@ import datetime as dt
 from docx2pdf import convert
 from docxtpl import DocxTemplate, InlineImage
 
-doc = DocxTemplate("photoExhibitionTemplate2.docx")
+doc = DocxTemplate("MVP/photoExhibitionTemplate2.docx")
 
 # simulating data that I imagine would be received from Egnyte API in the future
 processedImages = [
-    {'images' :  InlineImage(doc, 'images/img1.jpg'), 'captions': 'I think this is a cat, the breed is: ___'},
-    {'images' : InlineImage(doc, 'images/img2.jpg'), 'captions': 'I think this is a dog, the breed is: ___'},
-    {'images' : InlineImage(doc,'images/img3.jpg'), 'captions': 'I think this is a puppy, the breed is: ___'} ]
+    {'images' :  InlineImage(doc, 'MVP/images/img1.jpg'), 'captions': 'I think this is a cat, the breed is: ___'},
+    {'images' : InlineImage(doc, 'MVP/images/img2.jpg'), 'captions': 'I think this is a dog, the breed is: ___'},
+    {'images' : InlineImage(doc,'MVP/images/img3.jpg'), 'captions': 'I think this is a puppy, the breed is: ___'} ]
 
 
 # I will later figure out how to control image size
@@ -31,7 +31,7 @@ context = {
 doc.render(context)
 
 # save the document object as a word file
-reportWordPath = 'reports/report_{0}.docx'.format(todayStr)
+reportWordPath = 'MVP/reports/report_{0}.docx'.format(todayStr)
 doc.save(reportWordPath)
 
 # convert the word file as pdf file
