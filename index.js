@@ -49,12 +49,25 @@ var testEl = document.querySelector('#testbtn');
 var testfunction = function(event) {
   event.preventDefault();
 
+
   console.log('test worked');
   alert('test worked');
+
 
 };
 
 testEl.addEventListener('click', testfunction);
+
+reportname= 'report_13-Nov-2022.pdf'
+
+var testEl2 = document.querySelector('#testbtn2');
+var testfunctionpython = function(event) {
+  event.preventDefault();
+  // window.open('http://127.0.0.1:8000/docs', '_blank').focus();
+  window.open(`http://127.0.0.1:8000/static/${reportname}`, '_blank').focus();
+  
+};
+testEl2.addEventListener('click', testfunctionpython);
 
 
 //trying to bridge to python
