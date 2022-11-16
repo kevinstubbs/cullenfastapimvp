@@ -3,7 +3,10 @@ from docx2pdf import convert  # type: ignore
 from docxtpl import DocxTemplate, InlineImage  # type: ignore
 from models import MetaData
 
+
+# CHANGE
 TEMPLATE = "photoExhibitionTemplate2.docx"
+# TEMPLATE = "MVP/photoExhibitionTemplate2.docx"
 
 
 def create_report(image_data: list[MetaData]) -> None:
@@ -27,7 +30,9 @@ def create_report(image_data: list[MetaData]) -> None:
     doc.render(context)
 
     # save the document object as a word file
+    # CHANGE
     reportWordPath = 'reports/report_{0}.docx'.format(today)
+    # reportWordPath = 'MVP/reports/report_{0}.docx'.format(today)
     doc.save(reportWordPath)
 
     # convert the word file as pdf file

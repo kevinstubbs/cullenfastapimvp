@@ -5,7 +5,10 @@ async function loaded(reader) {
     // photos = document.getElementById('photos');
     // console.log(photos);
     // console.log(reader);
-    const response = await fetch('https://hf.space/embed/jph00/pets/+/api/predict/', {
+
+    // used to work
+    // https://hf.space/embed/jph00/pets/+/api/predict/
+    const response = await fetch('https://jph00-testing.hf.space/+/api/predict/', {
       method: "POST", body: JSON.stringify({ "data": [reader.result] }),
       headers: { "Content-Type": "application/json" }
     });

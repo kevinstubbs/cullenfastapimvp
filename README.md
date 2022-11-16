@@ -23,6 +23,8 @@ The purpose of this repo is to display two proof of concepts:
 
 To use this repo:
 
+pipenv run uvicorn fast:app --reload
+
 1. Open the index.html file in your browser. Select 'catTest.jpg', 'dogTest.jpg', 'dunnoTest.jpg' or any photos of cats or dogs on your computer to view the breed of the animal and the confidence of the answer.
 2. Run the python script to create a word document and pdf (output in reports folder) that populated a template (photoExhibitionTemplate2.docx) with a table of photos (from ./images folder) and hard coded text. 
 
