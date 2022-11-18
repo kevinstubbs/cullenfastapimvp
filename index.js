@@ -8,7 +8,7 @@ async function loaded(reader) {
 
     // used to work
     // https://hf.space/embed/jph00/pets/+/api/predict/
-    const response = await fetch('https://jph00-testing.hf.space/+/api/predict/', {
+    const response = await fetch('https://7504cc1e81cca145.gradio.app/run/predict', {
       method: "POST", body: JSON.stringify({ "data": [reader.result] }),
       headers: { "Content-Type": "application/json" }
     });
@@ -61,6 +61,8 @@ var testfunction = function(event) {
 
 testEl.addEventListener('click', testfunction);
 
+
+// python bridge
 reportname= 'report_13-Nov-2022.pdf'
 
 var testEl2 = document.querySelector('#testbtn2');
@@ -73,11 +75,44 @@ var testfunctionpython = function(event) {
 testEl2.addEventListener('click', testfunctionpython);
 
 
-//trying to bridge to python
-// import {PythonShell} from 'python-shell';
 
-// PythonShell.run('./index.py', null, function (err) {
-//   if (err) throw err;
-//   console.log('finished');
+
+
+
+
+
+
+
+
+
+
+// caption input
+var captionButton = document.getElementById('cabtionbtn');
+
+// captionButton.addEventListener('click', function(){
+//   const input = document.getElementById("captionText").value;
+  
 // });
 
+// var testfunctioncaption = function(event) {
+//   event.preventDefault();
+//   alert("Input: "+ input);
+  
+// }
+if(captionButton){
+  captionButton.addEventListener('click', swapper, false);
+  const input = document.getElementById("captionText").value;
+  alert("Input: "+ input);
+}
+// captionButton.addEventListener('click', function(){
+//   // event.preventDefault();
+//   const input = document.getElementById("captionText").value;
+//   alert("Input: "+ input);
+// });
+
+const btn= document.getElementById("btn");
+
+btn.addEventListener('click', function(){
+  var name = document.getElementById("myName").value;
+  alert("Name: "+ name);
+});
