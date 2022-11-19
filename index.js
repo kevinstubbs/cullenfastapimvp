@@ -8,7 +8,7 @@ async function loaded(reader) {
 
     // used to work
     // https://hf.space/embed/jph00/pets/+/api/predict/
-    const response = await fetch('https://7504cc1e81cca145.gradio.app/run/predict', {
+    const response = await fetch('https://cullerwhale-classifier.hf.space/run/predict', {
       method: "POST", body: JSON.stringify({ "data": [reader.result] }),
       headers: { "Content-Type": "application/json" }
     });
