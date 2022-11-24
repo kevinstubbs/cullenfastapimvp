@@ -1,4 +1,4 @@
-from fastapi import FastAPI, UploadFile
+from fastapi import FastAPI, UploadFile, File
 from fastapi.staticfiles import StaticFiles
 from models import MetaData
 from document_generation import create_report

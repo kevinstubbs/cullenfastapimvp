@@ -8,6 +8,27 @@ async function loaded(reader) {
 
     // used to work
     // https://hf.space/embed/jph00/pets/+/api/predict/
+    // Send to python
+    
+    var file = document.getElementById('photos').files[0];
+    console.info(file)
+    if(file){
+      var formData = new FormData();
+      formData.append('file', file, file.name);
+
+      fetch('http://127.0.0.1:8000/uploadfile/t', {
+             method: 'post',
+             body: formData,
+             mode: 'no-cors'
+           })
+           .then(response => {
+             console.log(response);
+           })
+           .catch(error => {
+             console.error(error);
+           });
+    }
+    
     const response = await fetch('https://cullerwhale-classifier.hf.space/run/predict', {
       method: "POST", body: JSON.stringify({ "data": [reader.result] }),
       headers: { "Content-Type": "application/json" }
@@ -24,8 +45,7 @@ async function loaded(reader) {
     // displaying data from API call
     const div = document.createElement('div');
     div.innerHTML = `<br/><img src="${reader.result}" width="300"> <p>${label}</p> <p>${conf}<p>`
-    document.body.append(div);
-    
+    document.body.append(div);   
   }
 
   // read files uploaded
