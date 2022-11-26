@@ -11,12 +11,8 @@ async function onImageLoad(reader, file) {
     body: formData,
     mode: "no-cors",
   })
-    .then((response) => {
-      console.log(response);
-    })
-    .catch((error) => {
-      console.error(error);
-    });
+    .then(console.log)
+    .catch(console.error);
 
   const response = await fetch(
     "https://cullerwhale-classifier.hf.space/run/predict",
