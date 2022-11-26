@@ -1,34 +1,22 @@
-// this was once commented out and included in index.html script tag due to one image in a batch giving a CORS error
+async function onImageLoad(reader, file) {
+  if (!file) throw new Error("onImageLoad called without file passed in.");
 
-//handle read and process photos
-async function loaded(reader) {
-  // photos = document.getElementById('photos');
-  // console.log(photos);
-  // console.log(reader);
+  const formData = new FormData();
+  formData.append("file", file, file.name);
+  formData.append("project_folder", "uploaded-project_folder");
 
-  // used to work
-  // https://hf.space/embed/jph00/pets/+/api/predict/
-  // Send to python
-
-  var file = document.getElementById("photos").files[0];
-  console.info(file);
-  if (file) {
-    var formData = new FormData();
-    formData.append("file", file, file.name);
-    formData.append("project_folder", 'uploaded-project_folder');
-
-    fetch("http://127.0.0.1:8000/uploadfile/t", {
-      method: "post",
-      body: formData,
-      mode: "no-cors",
+  // TODO: Use async/await pattern instead.
+  fetch("http://127.0.0.1:8000/uploadfile/t", {
+    method: "post",
+    body: formData,
+    mode: "no-cors",
+  })
+    .then((response) => {
+      console.log(response);
     })
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }
+    .catch((error) => {
+      console.error(error);
+    });
 
   const response = await fetch(
     "https://cullerwhale-classifier.hf.space/run/predict",
@@ -38,90 +26,66 @@ async function loaded(reader) {
       headers: { "Content-Type": "application/json" },
     }
   );
-  const json = await response.json();
-  // console.log(reader);
-  console.log("json", json);
+
+  const facehuggerResults = await response.json();
+  console.log("json", { facehuggerResults });
 
   // storing data from API call
-  const label = json["data"][0]["confidences"][0]["label"];
-  const conf =
-    100 * json["data"][0]["confidences"][0]["confidence"].toPrecision(4);
-  console.log(label);
-  console.log(conf);
+  const caption = facehuggerResults["data"][0]["confidences"][0]["label"];
+  const confidence = (
+    100 * facehuggerResults["data"][0]["confidences"][0]["confidence"]
+  ).toPrecision(4);
+  console.log({ caption, confidence });
+
   // displaying data from API call
   const div = document.createElement("div");
-  div.innerHTML = `<br/><img src="${reader.result}" width="300"> <p>${label}</p> <p>${conf}<p>`;
+  div.innerHTML = `<br/><img class="image-to-upload" fileName="${file.name}" confidence="${confidence}" src="${reader.result}" width="300" caption="${caption}"> <p>${caption}</p> <p>${confidence}<p>`;
   document.body.append(div);
 }
 
 // read files uploaded
-function read(file) {
-  console.log(file);
+function loadImage(file) {
   const reader = new FileReader();
   // console.log(file);
-  reader.addEventListener("load", () => loaded(reader));
+  reader.addEventListener("load", () => onImageLoad(reader, file));
   reader.readAsDataURL(file);
   // console.log(file);
 }
 
-console.log({photos});
 photos.addEventListener("input", () => {
-  [...photos.files].map(read);
+  [...photos.files].forEach(loadImage);
 });
 
-// call python script integration attempts
-// const result = require('subprocess').result
+const createReportButton = document.getElementById("create-report");
 
-/// test button javascript
-var testEl = document.querySelector("#testbtn");
+createReportButton.addEventListener("click", async function () {
+  const imagesToUpload = document.querySelectorAll(".image-to-upload");
 
-var testfunction = function (event) {
-  event.preventDefault();
+  if (!imagesToUpload.length) {
+    alert("Upload an image before creating a report.");
+    return;
+  }
 
-  console.log("test worked");
-  alert("test worked");
-};
+  const data = await fetch("http://127.0.0.1:8000/input_metadata/", {
+    method: "POST",
+    headers: {
+      Accept: "application/json, text/plain, */*",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      data: [...imagesToUpload].map((x) => ({
+        folder_name: "images",
+        file_name: x.getAttribute("fileName"),
+        caption: x.getAttribute("caption"),
+        confidence: x.getAttribute("confidence"),
+      })),
+    }),
+  });
 
-testEl.addEventListener("click", testfunction);
+  const reportname = (await data.text()).replace(/"/g, "");
 
-// python bridge
-reportname = "report_13-Nov-2022.pdf";
+  // Abort if the server didn't send any data back.
+  if (!reportname.length) return;
 
-var testEl2 = document.querySelector("#testbtn2");
-var testfunctionpython = function (event) {
-  event.preventDefault();
-  // window.open('http://127.0.0.1:8000/docs', '_blank').focus();
-  window.open(`http://127.0.0.1:8000/static/${reportname}`, "_blank").focus();
-};
-testEl2.addEventListener("click", testfunctionpython);
-
-// caption input
-var captionButton = document.getElementById("cabtionbtn");
-
-// captionButton.addEventListener('click', function(){
-//   const input = document.getElementById("captionText").value;
-
-// });
-
-// var testfunctioncaption = function(event) {
-//   event.preventDefault();
-//   alert("Input: "+ input);
-
-// }
-if (captionButton) {
-  captionButton.addEventListener("click", swapper, false);
-  const input = document.getElementById("captionText").value;
-  alert("Input: " + input);
-}
-// captionButton.addEventListener('click', function(){
-//   // event.preventDefault();
-//   const input = document.getElementById("captionText").value;
-//   alert("Input: "+ input);
-// });
-
-const btn = document.getElementById("btn");
-
-btn.addEventListener("click", function () {
-  var name = document.getElementById("myName").value;
-  alert("Name: " + name);
+  window.open(`http://127.0.0.1:8000/${reportname}`, "_blank").focus();
 });

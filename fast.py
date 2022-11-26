@@ -1,10 +1,20 @@
 from fastapi import FastAPI, UploadFile, File, Form, Body
 from fastapi.staticfiles import StaticFiles
+from fastapi.middleware.cors import CORSMiddleware
 from models import MetaData, MetaDataRequest
 from document_generation import create_report
 import os
 
 app = FastAPI()
+origins = ["*"]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 app.mount("/reports", StaticFiles(directory="reports", html=True), name="reports")
 
