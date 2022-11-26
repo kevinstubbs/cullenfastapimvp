@@ -7,17 +7,17 @@ doc = DocxTemplate("photoExhibitionTemplate2.docx")
 
 # simulating data that I imagine would be received from Egnyte API in the future
 processedImages = [
-    {'images' :  InlineImage(doc, 'images/img1.jpg'), 'captions': 'I think this is a cat, the breed is: ___'},
-    {'images' : InlineImage(doc, 'images/img2.jpg'), 'captions': 'I think this is a dog, the breed is: ___'},
-    {'images' : InlineImage(doc,'images/img3.jpg'), 'captions': 'I think this is a puppy, the breed is: ___'} ]
+    {'image' :  InlineImage(doc, 'images/img1.jpg'), 'caption': 'I think this is a cat, the breed is: ___'},
+    {'image' : InlineImage(doc, 'images/img2.jpg'), 'caption': 'I think this is a dog, the breed is: ___'},
+    {'image' : InlineImage(doc,'images/img3.jpg'), 'caption': 'I think this is a puppy, the breed is: ___'} ]
 
 
 # I will later figure out how to control image size
 # processedImages = [
-#     {'images' :  InlineImage(doc, 'images/catTest.jpg'), 'captions': 'I think this is a cat, the breed is: ___'},
-#     {'images' : InlineImage(doc, 'images/dogTest.jpg'), 'captions': 'I think this is a dog, the breed is: ___'},
-#     {'images' : InlineImage(doc,'images/dogTest2.jpg'), 'captions': 'I think this is a puppy, the breed is: ___'}, 
-#     {'images' : InlineImage(doc,'images/dunnoTest.jpg'), 'captions': 'I have no clue what this is'}]
+#     {'image' :  InlineImage(doc, 'images/catTest.jpg'), 'caption': 'I think this is a cat, the breed is: ___'},
+#     {'image' : InlineImage(doc, 'images/dogTest.jpg'), 'caption': 'I think this is a dog, the breed is: ___'},
+#     {'image' : InlineImage(doc,'images/dogTest2.jpg'), 'caption': 'I think this is a puppy, the breed is: ___'}, 
+#     {'image' : InlineImage(doc,'images/dunnoTest.jpg'), 'caption': 'I have no clue what this is'}]
 
 todayStr = dt.datetime.now().strftime("%d-%b-%Y")
 

@@ -1,4 +1,5 @@
 import datetime as dt
+from docx.shared import Mm
 from docx2pdf import convert  # type: ignore
 from docxtpl import DocxTemplate, InlineImage  # type: ignore
 from models import MetaData
@@ -15,7 +16,10 @@ def create_report(image_data: list[MetaData]) -> str:
     process_data = []
 
     for data in image_data:
-        temp_dict = {"images": InlineImage(doc, ''.join([data.folder_name, '/', data.file_name])), "captions": data.caption}
+        # SECURITY: Don't allow the user to provide arbitrary paths to a file.
+        # Best: Just accept a file id, and then look up the location of that file (based on id - not name) in a database.
+        # When you upload => store the file path w/ random ID in the database, return the ID to the user.
+        temp_dict = {"image": InlineImage(doc, ''.join([data.folder_name, '/', data.file_name]), width=Mm(20), height=Mm(10)), "caption": data.caption}
         process_data.append(temp_dict)
 
     today = dt.datetime.now().strftime("%d-%b-%Y")
