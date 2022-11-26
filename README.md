@@ -37,5 +37,49 @@ The end goal is to seemlessly pass photos (either uploaded or eventually with [E
     - Passing the results of the huggingfaces AI API in index.html through the python script, index.py, to generate a word document. 
 
 
+# Testing endpoints with Postman
+## Create a report with two images (as cURL)
+curl --location --request POST 'http://127.0.0.1:8000/input_metadata' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+  "data": [{
+      "folder_name": "images",
+      "file_name": "catTest.jpg",
+      "caption": "something smol"
+  }, {
+      "folder_name": "images",
+      "file_name": "dogTest.jpg",
+      "caption": "good boi"
+  }]
+}'
 
+## As javascript vanilla Fetch
+var myHeaders = new Headers();
+myHeaders.append("Content-Type", "application/json");
 
+var raw = JSON.stringify({
+  "data": [
+    {
+      "folder_name": "images",
+      "file_name": "catTest.jpg",
+      "caption": "something smol"
+    },
+    {
+      "folder_name": "images",
+      "file_name": "dogTest.jpg",
+      "caption": "good boi"
+    }
+  ]
+});
+
+var requestOptions = {
+  method: 'POST',
+  headers: myHeaders,
+  body: raw,
+  redirect: 'follow'
+};
+
+fetch("http://127.0.0.1:8000/input_metadata", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
